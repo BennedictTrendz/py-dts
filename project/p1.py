@@ -12,7 +12,7 @@ priority = 0
 
 
 #netacad email cth: 'abcd@gmail.com'
-email='abcd@gmail.com'
+email='ardhianto.hari@pajak.go.id'
 
 # copy-paste semua #Graded cells di bawah ini
 
@@ -22,15 +22,23 @@ email='abcd@gmail.com'
 # Manual, filter, list comprehension
 def letter_catalog(items,letter='A'):
   pass
-  # MULAI KODEMU DI SINI
-  # ini kode saya dst TENTUNYA SUDAH DIKERJAKAN!
+     hasil = []
+    for item in items:
+        if item[0]==letter:
+            hasil.append(item)
+    return hasil
 
 #Graded
 
 def counter_item(items):
   pass
-  # MULAI KODEMU DI SINI
-  # ini kode saya dst TENTUNYA SUDAH DIKERJAKAN!
+   itung ={}
+    for item in items:
+        if item in itung:
+            itung[item] += 1
+        else:
+            itung[item] = 1
+    return(itung)
 
 #Graded
 
@@ -42,24 +50,36 @@ prices = [6,5,3,10,12,7,14,15,8,7,9]
 chart = ['Blueberries','Blueberries','Grapes','Apple','Apple','Apple','Blueberries','Guava','Jackfruit','Blueberries','Jackfruit']
 
 # MULAI KODEMU DI SINI
-fruit_price = None # ini kode saya dst TENTUNYA SUDAH DIKERJAKAN!
+fruit_price = {}
+for i in range(len(fruits)):
+    fruit_price[fruits[i]] = prices[i]
 
 def total_price(dcounter,fprice):
-  pass
-  # MULAI KODEMU DI SINI
-  # ini kode saya dst
+    pass
+    prizeSum = 0
+    for key, value in dcounter.items():
+        prizeSum += fprice[key]*value
+    return prizeSum
 
 #Graded
 
 def discounted_price(total,discount,minprice=100):
   pass
-  # MULAI KODEMU DI SINI
-  # ini kode saya dst TENTUNYA SUDAH DIKERJAKAN!
+      if total < minprice:
+        bayar = total
+    else:
+        disc = 100 - discount
+        bayar = (total*disc/100)
+    return bayar
 
 
 #Graded
 
 def print_summary(items,fprice):
   pass
-  # MULAI KODEMU DI SINI
-  # ini kode saya dst TENTUNYA SUDAH DIKERJAKAN!
+  countItem = counter_item(items)
+    total = total_price(countItem,fruit_price)
+    for key,value in sorted(countItem.items()):
+        print(value,key,":",fprice[key]*value)
+    print("total :",total)
+    print("discount price :",discounted_price(total,10,minprice=100))
